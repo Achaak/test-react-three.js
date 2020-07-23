@@ -103,7 +103,7 @@ class World {
   }
 
   getRenderer() {
-    return this.renderer.domElement
+    return this.renderer
   }
 
   randomInRange(min, max) {
