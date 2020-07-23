@@ -98,7 +98,11 @@ class World {
     this.renderer.render( this.scene, this.camera );
   }
 
-  getRender() {
+  getRenderDomElement() {
+    return this.renderer.domElement
+  }
+
+  getRenderer() {
     return this.renderer.domElement
   }
 

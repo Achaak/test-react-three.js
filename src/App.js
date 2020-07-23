@@ -10,8 +10,8 @@ function App() {
   const world = new World()
 
   useEffect(() => {
-    ref.current.appendChild(world.getRender())
-    ref.current.appendChild( VRButton.createButton( world.getRender() ) );
+    ref.current.appendChild(world.getRenderDomElement())
+    ref.current.appendChild( VRButton.createButton( world.getRenderer() ) );
 
     // eslint-disable-next-line
   }, [])
