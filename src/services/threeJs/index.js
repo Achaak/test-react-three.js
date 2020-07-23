@@ -2,7 +2,7 @@ import * as THREE from "three";
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import randomColor from 'randomcolor'
 
-const NB_BALLS = 100
+const NB_BALLS = 200
 const MAP_SIZE = 1000
 
 class World {
