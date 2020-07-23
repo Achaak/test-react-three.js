@@ -37,7 +37,7 @@ class World {
     this.renderer.setSize( window.innerWidth, window.innerHeight );
     this.renderer.setAnimationLoop( function () {
       this.update()
-    } );
+    }.bind(this) );
     
     this.controls = new OrbitControls( this.camera, this.renderer.domElement );
     
