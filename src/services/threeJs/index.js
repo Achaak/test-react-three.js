@@ -10,7 +10,7 @@ class World {
     this.balls = []
 
     this.scene = new THREE.Scene();
-    var path = "images/dark-s_";
+    var path = process.env.PUBLIC_URL+"/images/dark-s_";
     var format = '.jpg';
     var urls = [
       path + 'px' + format, path + 'nx' + format,
