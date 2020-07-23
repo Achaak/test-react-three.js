@@ -19,14 +19,10 @@ class World {
     ];
     var textureCube = new THREE.CubeTextureLoader().load( urls );
     this.scene.background = textureCube;
-
+    
     this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
     this.camera.position.z = 1;
 
-    /*var light = new THREE.AmbientLight( "#878787" ); // soft white light
-    this.scene.add( light );*/
-
-    //var pointLight = new THREE.PointLight("#ffffff", 1, MAP_SIZE*0.9, Math.PI / 2, 0.9, 1);
     var pointLight = new THREE.PointLight("#ffffff", 1, MAP_SIZE*0.9);
     pointLight.position.set(0, 0, 1);
     pointLight.castShadow = true;
@@ -34,17 +30,26 @@ class World {
     pointLight.shadow.camera.far = 1000;
     pointLight.shadow.camera.near = 750;
     pointLight.shadow.camera.fov = 10;
-    console.log(pointLight)
     this.scene.add(pointLight);
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.xr.enabled = true
     this.renderer.setSize( window.innerWidth, window.innerHeight );
+    this.renderer.setAnimationLoop( function () {
+      this.update()
+    } );
     
     this.controls = new OrbitControls( this.camera, this.renderer.domElement );
     
     this.initBalls()
-    this.startLoop();
+    //this.startLoop();
+    window.addEventListener('resize', this.resize.bind(this));
+  }
+
+  resize() {
+    this.camera.aspect = window.innerWidth/window.innerHeight
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize( window.innerWidth, window.innerHeight );
   }
 
   initBalls() {
@@ -87,28 +92,11 @@ class World {
     }
   }
 
-  update(progress) {
-    // Defined function
-    //var timestamp = new Date().getTime();
-
+  update() {
     this.updateBallsPositions()
     
     this.renderer.render( this.scene, this.camera );
   }
-
-  // Loop function
-  loop(timestamp = new Date().getTime()) {
-    var progress = (timestamp - this.lastRender);
-
-    this.update(progress);
-    
-    this.lastRender = timestamp;
-    
-    requestAnimationFrame(this.loop.bind(this));
-  }
-
-  startLoop() {  this.flagLoop = true; requestAnimationFrame(this.loop.bind(this))}
-  stopLoop() { this.flagLoop = false }
 
   getRender() {
     return this.renderer.domElement

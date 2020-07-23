@@ -12,6 +12,8 @@ function App() {
   useEffect(() => {
     ref.current.appendChild(world.getRender())
     ref.current.appendChild( VRButton.createButton( world.getRender() ) );
+
+    // eslint-disable-next-line
   }, [])
 
   return (
