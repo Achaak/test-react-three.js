@@ -89,7 +89,7 @@ class World {
 
   update(progress) {
     // Defined function
-    var timestamp = new Date().getTime();
+    //var timestamp = new Date().getTime();
 
     this.updateBallsPositions()
     

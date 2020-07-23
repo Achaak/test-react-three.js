@@ -2,7 +2,6 @@
   "name": "react-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "space-balls",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -36,7 +35,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "cross-env": "^7.0.2"
-  }
+  "devDependencies": {}
 }
